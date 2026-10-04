@@ -7,5 +7,5 @@ export default defineConfig({
   // For https://USERNAME.github.io/REPO-NAME/
   // change this to: base: "/REPO-NAME/"
   // For https://USERNAME.github.io/ use: base: "/"
-  base: "/gwp-ai/"
+  base: "/GWP-AI/"
 });
