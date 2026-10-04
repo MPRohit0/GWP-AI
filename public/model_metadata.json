@@ -1,0 +1,60 @@
+{
+  "status": "FINAL_XGBOOST_CONFIGURATION",
+  "target": "y_Total_Life_Cycle_GWP_kgCO2eq",
+  "target_unit": "kg CO2-eq",
+  "target_definition": "A1-A3 + A4 + A5 + B6",
+  "feature_order": [
+    "Built-up Area (m2)",
+    "Number of Floors (count)",
+    "Building Height (m)",
+    "Service Life (years)",
+    "Cement (tonnes)",
+    "Steel Reinforcement (tonnes)",
+    "Bricks/Blocks (tonnes)",
+    "Sand (tonnes)",
+    "Aggregate (tonnes)",
+    "Glass (tonnes)",
+    "Wood (m3)",
+    "Transportation Distance (km)",
+    "Construction Energy (kWh)",
+    "Annual Electricity Consumption (kWh/year)",
+    "Building Type_Industrial",
+    "Building Type_Institutional",
+    "Building Type_Office",
+    "Building Type_Residential"
+  ],
+  "categorical_encoding": {
+    "method": "pandas.get_dummies",
+    "column": "Building Type",
+    "drop_first": true,
+    "dtype": "int",
+    "categories_expected": [
+      "Commercial",
+      "Industrial",
+      "Institutional",
+      "Office",
+      "Residential"
+    ],
+    "dropped_reference_category": "Commercial"
+  },
+  "xgboost": {
+    "n_estimators": 300,
+    "max_depth": 3,
+    "learning_rate": 0.05,
+    "random_state": 42,
+    "other_parameters": "XGBoost defaults"
+  },
+  "validation": {
+    "method": "4-fold KFold",
+    "shuffle": true,
+    "random_state": 42,
+    "r2_scores": [
+      0.5254479,
+      0.91742092,
+      0.92195397,
+      0.95787058
+    ],
+    "mean_r2": 0.8306733425,
+    "std_r2": 0.1769173558
+  }
+}
